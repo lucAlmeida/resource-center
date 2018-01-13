@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import MUIDefaultTheme from './hoc/MUIDefaultTheme/MUIDefaultTheme';
+import Aux from './hoc/Aux/Aux';
+import withClass from './hoc/withClass/withClass';
+import MuiThemeWrapper from './hoc/MuiThemeWrapper/MuiThemeWrapper';
+import customThemeOne from './themes/customThemeOne'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
@@ -9,14 +12,14 @@ class App extends Component {
   state = {
     open: false
   }
-  
+
   handleToggle = () => {
     this.setState({open: !this.state.open});
   }
 
   render() {
     return (
-        <div className="App">
+      <Aux>
           <AppBar
             title="Title"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
@@ -29,9 +32,9 @@ class App extends Component {
             <MenuItem>Menu Item</MenuItem>
             <MenuItem>Menu Item 2</MenuItem>
           </Drawer>
-        </div>
+      </Aux>
     );
   }
 }
 
-export default MUIDefaultTheme(App);
+export default MuiThemeWrapper(withClass(App, "App"), customThemeOne);
